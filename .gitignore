@@ -1,0 +1,12 @@
+# Created by .ignore support plugin (hsz.mobi)
+### Example user template template
+### Example user template
+
+# IntelliJ project files
+.idea
+*.iml
+node_modules/
+
+.DS_Store
+
+HttpsFetch-darwin-x64/
