@@ -1,0 +1,25 @@
+{
+  "name": "fetch_https",
+  "version": "1.0.0",
+  "description": "fetch https",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "package": "asar pack HttpsFetch-darwin-x64/HttpsFetch.app/Contents/Resources/app HttpsFetch-darwin-x64/HttpsFetch.app/Contents/Resources/app.asar",
+    "build": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=Icon.icns --prune=true --out=out"
+  },
+  "keywords": [
+    "https"
+  ],
+  "author": "Joe",
+  "license": "ISC",
+  "devDependencies": {
+    "asar": "^0.13.0",
+    "electron": "^1.4.14",
+    "electron-packager": "^8.5.0",
+    "electron-rebuild": "^1.5.6"
+  },
+  "dependencies": {
+    "whistle": "^1.2.6"
+  }
+}
