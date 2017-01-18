@@ -1,5 +1,6 @@
 # Fetch_https
 
+    将fetch_https-darwin-x64下载到本地。
 
     一、Https如何抓取？
        1、打开App
