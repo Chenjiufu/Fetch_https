@@ -1,14 +1,12 @@
 const electron = require('electron')
 const path = require('path')
+const cwd  = path.join(__dirname, '.');
 const child_process = require('child_process');
-child_process.execFileSync(process.env.SHELL, ['-i', '-c', 'launchctl setenv PATH "$PATH"'])
-const child = child_process.execFile('node', ['./node_modules/whistle/bin/whistle.js', 'start'], function (err, res) {
-    if (err) throw err;
-});
-//const child = spawn(path.resolve('./bin/start'), function(err, res){
-//	if(err) throw err;
-//});
-
+child_process.execFile('node', [path.join(cwd, '/node_modules/whistle/bin/whistle.js'), 'start'], {
+	env: {'PATH':'/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin'}
+}, function(err, res){
+	if(err) throw err;
+})
 // const ls = spawn('ls', ['-lh', '/usr']);
 // Module to control application life.
 const app = electron.app
@@ -48,11 +46,22 @@ function createWindow() {
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.on('ready', createWindow)
-// Quit when all windows are closed.
-app.on('window-all-closed', function () {
-    child_process.execFile('node', ['./node_modules/whistle/bin/whistle.js', 'stop'], function (err, res) {
-        if (err) throw err;
-    });
+	// Quit when all windows are closed.
+app.on('window-all-closed', function() {
+	/*
+	var args = ['./node_modules/whistle/bin/whistle.js', 'stop'];
+	run('node', args, function(err){
+	  if(err){
+	    console.error('node stop failed!');
+	    process.exit(1);
+	  }
+	  console.log('node stopped!');
+	});*/
+	child_process.execFile('node', [path.join(cwd, '/node_modules/whistle/bin/whistle.js'), 'stop'], {
+		env: {'PATH':'/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin'}
+	}, function(err, res){
+		if(err) throw err;
+	});
 //		// On OS X it is common for applications and their menu bar
     // to stay active until the user quits explicitly with Cmd + Q
     if (process.platform !== 'darwin') {

@@ -6,7 +6,7 @@
   "scripts": {
     "start": "electron .",
     "package": "asar pack HttpsFetch-darwin-x64/HttpsFetch.app/Contents/Resources/app HttpsFetch-darwin-x64/HttpsFetch.app/Contents/Resources/app.asar",
-    "build": "electron-packager . HttpsFetch --overwrite && cp Icon.icns HttpsFetch-darwin-x64/HttpsFetch.app/Contents/Resources/electron.icns"
+    "build": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=Icon.icns --prune=true --out=out"
   },
   "keywords": [
     "https"
@@ -19,7 +19,7 @@
     "electron-packager": "^8.5.0",
     "electron-rebuild": "^1.5.6"
   },
-  "dependencies":{
+  "dependencies": {
     "whistle": "^1.2.6"
   }
 }
