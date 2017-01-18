@@ -1,6 +1,11 @@
 const electron = require('electron')
-const spawn = require('child_process').spawn;
-const child = spawn('npm', ['start'], { cwd: './node_modules/whistle/'});
+//const spawn = require('child_process').spawn;
+//const child = spawn('node', ['./node_modules/whistle/bin/whistle.js','start']);
+const exec = require('child_process').exec;
+const child = exec('node ./node_modules/whistle/bin/whistle.js start', {}, function(err, s, serr){
+	console.log(err, s, serr)
+});
+
 // const ls = spawn('ls', ['-lh', '/usr']);
 // Module to control application life.
 const app = electron.app
