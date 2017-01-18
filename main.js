@@ -1,17 +1,19 @@
 const electron = require('electron')
-//const spawn = require('child_process').spawn;
-//const child = spawn('node', ['./node_modules/whistle/bin/whistle.js','start']);
-const exec = require('child_process').exec;
-const child = exec('node ./node_modules/whistle/bin/whistle.js start', {}, function(err, s, serr){
-	console.log(err, s, serr)
+const path = require('path')
+const child_process = require('child_process');
+child_process.execFileSync(process.env.SHELL, ['-i', '-c', 'launchctl setenv PATH "$PATH"'])
+const child = child_process.execFile('node', ['./node_modules/whistle/bin/whistle.js', 'start'], function(err, res){
+	if(err) throw err;
 });
+//const child = spawn(path.resolve('./bin/start'), function(err, res){
+//	if(err) throw err;
+//});
 
 // const ls = spawn('ls', ['-lh', '/usr']);
 // Module to control application life.
 const app = electron.app
 	// Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow
-const path = require('path')
 const url = require('url')
 	// Keep a global reference of the window object, if you don't, the window will
 	// be closed automatically when the JavaScript object is garbage collected.
@@ -33,7 +35,7 @@ function createWindow() {
 	mainWindow.loadURL("http://127.0.0.1:8899/");
 	// window.loadURL('https://github.com')
 	// Open the DevTools.
-	// mainWindow.webContents.openDevTools()
+	 mainWindow.webContents.openDevTools()
 	// Emitted when the window is closed.
 	mainWindow.on('closed', function() {
 		// Dereference the window object, usually you would store windows
@@ -48,7 +50,8 @@ function createWindow() {
 app.on('ready', createWindow)
 	// Quit when all windows are closed.
 app.on('window-all-closed', function() {
-	// On OS X it is common for applications and their menu bar
+	child_process.spawn('node', ['./node_modules/whistle/bin/whistle.js','stop']);
+//		// On OS X it is common for applications and their menu bar
 	// to stay active until the user quits explicitly with Cmd + Q
 	if(process.platform !== 'darwin') {
 		app.quit()
