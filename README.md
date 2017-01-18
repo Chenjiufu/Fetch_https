@@ -1,6 +1,5 @@
 # Fetch_https
 
-FAQ：
 
     一、Https如何抓取？
        1、打开App
