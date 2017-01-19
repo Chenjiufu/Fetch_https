@@ -10,7 +10,7 @@
 
        设置手机代理到本地IP,8899端口。
 
-       3、iOS手机打开Safari浏览器方位  http://rootca.pro/
+       3、iOS手机打开Safari浏览器，访问http://rootca.pro/
 
        按提示点击安装证书。
 
