@@ -1,6 +1,6 @@
 # Fetch_https
 
-####     将fetch_https-darwin-x64_forOS下载到本地。
+####     将fetch_https-darwin-x64下载到本地。
 
 ##   一、Https如何抓取？
 
