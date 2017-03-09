@@ -1,3 +1,3 @@
 
 
-####     fetch_https-darwin-x64为打包后的软件。
+####     fetch_https.zip为打包后的软件。
